@@ -29,12 +29,16 @@ public class MarkdownParse {
 
 
             if(link.indexOf(".") != -1 && link.indexOf(" ") == -1){
+                // we found a link
+            
+                // make sure it is not image link:
+                if(closeBracket < 0 || markdown.charAt(openBracket-1) == '!'){
+                    System.out.println("hi");
+                    continue;
+                }
                 toReturn.add(link);
             }
-            
-            
         }
-
         return toReturn;
     }
 
