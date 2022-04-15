@@ -16,12 +16,23 @@ public class MarkdownParse {
             if(openBracket < 0) break;
 
             int closeBracket = markdown.indexOf("]", openBracket);
+            if(closeBracket < 0) break;
+
             int openParen = markdown.indexOf("(", closeBracket);
             if(openParen < 0) break;
 
             int closeParen = markdown.indexOf(")", openParen);
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            if(closeParen < 0) break;
+
+            String link = markdown.substring(openParen + 1, closeParen);
             currentIndex = closeParen + 1;
+
+
+            if(link.indexOf(".") != -1 && link.indexOf(" ") == -1){
+                toReturn.add(link);
+            }
+            
+            
         }
 
         return toReturn;
