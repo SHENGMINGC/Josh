@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-public class MarkdownParse {
+public class test {
 
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
@@ -13,30 +13,14 @@ public class MarkdownParse {
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
             int openBracket = markdown.indexOf("[", currentIndex);
-            if(openBracket < 0) break;
-
             int closeBracket = markdown.indexOf("]", openBracket);
-            if(closeBracket < 0) break;
-
-            int openParen = markdown.indexOf("(", closeBracket);
-            if(openParen < 0) break;
-
+            // int openParen = markdown.indexOf("(", closeBracket);
+            int openParen = markdown.indexOf("(", currentIndex);
             int closeParen = markdown.indexOf(")", openParen);
-            if(closeParen < 0) break;
-
             String link = markdown.substring(openParen + 1, closeParen);
+            toReturn.add(link);
+
             currentIndex = closeParen + 1;
-
-
-            if(link.indexOf(".") != -1 && link.indexOf(" ") == -1){
-                // we found a link
-            
-                // make sure it is not image link:
-                if(closeBracket < 0 || markdown.charAt(openBracket-1) == '!'){
-                    continue;
-                }
-                toReturn.add(link);
-            }
         }
         return toReturn;
     }
