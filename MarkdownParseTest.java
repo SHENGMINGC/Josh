@@ -135,7 +135,7 @@ public class MarkdownParseTest {
     @Test
     public void newtest(){
         try {
-            assertEquals(List.of("youtube.com"), MarkdownParse.getLinks(Files.readString(Path.of("test-file8.md"))));
+            assertEquals(List.of(), MarkdownParse.getLinks(Files.readString(Path.of("test-file8.md"))));
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
