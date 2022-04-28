@@ -131,4 +131,13 @@ public class MarkdownParseTest {
             throw new IllegalArgumentException();
         }
     }
+
+    @Test
+    public void newtest(){
+        try {
+            assertEquals("", MarkdownParse.getLinks(Files.readString(Path.of("test-file8.md"))));
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
